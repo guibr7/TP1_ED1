@@ -139,6 +139,7 @@ int Empate(Tabuleiro *tab){
 }
 
 int JogadaMestre(Tabuleiro *tab,int g){
+      int existeJogMestre = 0;
       int aux = 0;
     char proximoAjogar; int quantV = 0;
     if(tab->quantX == tab->quantO){
@@ -150,13 +151,13 @@ int JogadaMestre(Tabuleiro *tab,int g){
     }
     //-------------------------------------------
     printf("Tabuleiro %d em andamento [%c:",g,proximoAjogar);
-     for (int l = 0; l < 3; l++) 
+
+    for (int l = 0; l < 3; l++) //JOGADA MESTRE HORIZONTAL
     {
-       
         for(int c = 0; c < 3; c++){
-            if (tab->matriz[l][c] != 'V' && tab->matriz[l][c] != proximoAjogar) {
+            if (tab->matriz[l][c] != 'V' && tab->matriz[l][c] != proximoAjogar) { 
                 quantV = 0;
-                break; // Pula o restante da linha (vai pra próxima linha)
+                break; // (vai pra próxima linha, sai do loop atual)
             }
             if(tab->matriz[l][c] == 'V'){
                 quantV+=1; aux = c+1;
@@ -165,14 +166,54 @@ int JogadaMestre(Tabuleiro *tab,int g){
         }
         if(quantV == 1){
             printf(" (%d,%d)",l+1,aux);
-             printf("]\n");
-            return 1;
+            existeJogMestre = 1;
+            //printf("]\n");
+            //return 1;
         }
     } 
-  
-    
-    
+
+    aux = 0; //JOGADA MESTRE COLUNA
+    for (int c = 0; c < 3; c++) {
+        quantV = 0;
+        for (int l = 0; l < 3; l++) {
+            if (tab->matriz[l][c] != 'V' && tab->matriz[l][c] != proximoAjogar) {
+                quantV = 0;
+                break;
+            }
+            if (tab->matriz[l][c] == 'V') {
+                quantV++;
+                aux = l + 1;
+            }
+        }
+        if (quantV == 1) {
+            printf(" (%d,%d)", aux, c + 1);  // Corrigido: linha, coluna
+            existeJogMestre = 1;
+        }
+    }
+
+    quantV = 0;
+    for(int d = 0; d < 3; d++){
+        if (tab->matriz[d][d] != 'V' && tab->matriz[d][d] != proximoAjogar) {
+            break;
+        }
+        if (tab->matriz[d][d] == 'V') {
+            quantV++;
+        }
+        if(quantV == 1){
+            existeJogMestre = 1;
+            printf(" (%d,%d)", d + 1, d + 1);
+        }
+    };
+
+    if (existeJogMestre) {
+        printf("]\n");
+        return 1;
+    } else {
+        printf("]\n");
+        return 0;
+    }
 }
+    
 void desalocarMemoria(Tabuleiro *tab){
     for (int i = 0; i < 3; i++){
         free(tab->matriz[i]);
