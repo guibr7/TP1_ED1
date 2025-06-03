@@ -44,7 +44,7 @@ int main()
                 continue;
             }
         }
-        desalocarMemoria(jogo);
+        DesalocarMemoria(jogo);
     }
     return 0;
 }
