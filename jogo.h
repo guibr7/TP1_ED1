@@ -1,8 +1,7 @@
 #ifndef jogo_h
 #define jogo_h
 
-typedef struct
-{
+typedef struct{
     char **matriz;
     int quantX;
     int quantO;
