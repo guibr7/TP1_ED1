@@ -15,30 +15,45 @@ int main()
         // exibir(jogo, c);
         if (TabuleiroEhValido(jogo, c) == 0)
         {
-            printf("Tabuleiro %d inválido\n",c);
+            printf("Tabuleiro %d invalido\n", c);
+            continue;
         }
         else
         {
             int xVitoria = Venceu(jogo, trincaX, 'X', c);
-            //printf("vitoria X: %d\n",xVitoria);
+            // printf("vitoria X: %d\n",xVitoria);
             int oVitoria = Venceu(jogo, trincaO, 'O', c);
-             //printf("Vitoria O: %d\n",oVitoria);
-            if (xVitoria == 1)
+            // printf("Vitoria O: %d\n",oVitoria);
+            if ((xVitoria == 1 && oVitoria == 1))
             {
-                printf("Tabuleiro %d com vitória [%c]\n", c, 'X');
+                printf("Tabuleiro %d invalido\n", c);
+                continue;
+            }
+            else if (xVitoria == 1)
+            {
+                printf("Tabuleiro %d com vitoria [%c]\n", c, 'X');
+
+                continue;
             }
             else if (oVitoria == 1)
             {
-                printf("Tabuleiro %d com vitória [%c]\n", c, 'O');
+                printf("Tabuleiro %d com vitoria [%c]\n", c, 'O');
+
+                continue;
             }
-            else if(Empate(jogo) == 1){
-                printf("Tabuleiro %d deu velha\n",c);
-            }else{
-                if(JogadaMestre(jogo,c) == 0){
-                    printf("Tabuleiro %d em andamento [proximo jogador indefinido]\n",c);
-                }else{ 
-                    continue;
-                }
+            else if (Empate(jogo) == 1)
+            {
+                printf("Tabuleiro %d deu velha\n", c);
+                continue;
+            }
+            else if (JogadaMestre(jogo, c) == 0)
+            {
+                printf("Tabuleiro %d em andamento [proximo jogador indefinido]\n", c);
+                continue;
+            }
+            else
+            {
+                continue;
             }
         }
         desalocarMemoria(jogo);
