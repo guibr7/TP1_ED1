@@ -1,0 +1,25 @@
+==============================================
+Como compilar e executar o programa no Linux
+==============================================
+1. Inicie o terminal.
+2. Navegue até o diretório da pasta do programa.
+3. Execute o comando: gcc tp.c -c
+4. Execute o comando: gcc jogo.c -c
+5. Execute o comando: gcc tp.o jogo.o -o exe
+6. Execute o comando: ./exe
+7. Insira a quantidade de tabuleiros a serem lidos
+8. Escreva o tabuleiro em formato "XOXOXOVVV"
+
+----------------------------------------------
+
+===============================================
+Como compilar e executar o programa no Windows:
+===============================================
+1. Abra o Prompt de Comando.
+2. Navegue até o diretório da pasta do programa.
+3. Execute o comando: gcc -c tp.c
+4. Execute o comando: gcc -c jogo.c
+5. Execute o comando: gcc tp.o jogo.o -o exe.exe
+6. Execute o comando: exe
+7. Insira a quantidade de tabuleiros a serem lidos.
+8. Escreva o tabuleiro no formato "XOXOXOVVV".

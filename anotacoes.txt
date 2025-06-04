@@ -1,2 +1,0 @@
-Após chamar LeituraTabuleiro() , é lido a quantidades de jogos 
-Cada tabuleiro é uma linha na matriz 

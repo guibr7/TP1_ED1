@@ -1,3 +1,4 @@
+//Guilherme Henrique Silva Miranda
 #include "jogo.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,15 +11,15 @@ int main()
     for (int c = 1; c <= n; c++)
     {
         Tabuleiro *jogo = LeituraTabuleiro(c);
-        if (TabuleiroEhValido(jogo, c) == 0)
+        if (TabuleiroEhValido(jogo) == 0)
         {
             printf("Tabuleiro %d invalido\n", c);
             continue;
         }
         else
         {
-            int xVitoria = Venceu(jogo, trincaX, 'X', c);
-            int oVitoria = Venceu(jogo, trincaO, 'O', c);
+            int xVitoria = Venceu(jogo, trincaX, 'X');
+            int oVitoria = Venceu(jogo, trincaO, 'O');
             
             if ((xVitoria == 1 && oVitoria == 1)){
                 printf("Tabuleiro %d invalido\n", c);

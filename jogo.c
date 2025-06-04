@@ -1,8 +1,8 @@
+//Guilherme Henrique Silva Miranda
 #include "jogo.h"
 #include "stdio.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 //LEITURA TABULEIRO
 Tabuleiro *LeituraTabuleiro(int n)
@@ -56,7 +56,7 @@ Tabuleiro *LeituraTabuleiro(int n)
     return tab;
 }
 
-int TabuleiroEhValido(Tabuleiro *tab, int n)
+int TabuleiroEhValido(Tabuleiro *tab)
 {
     if ((tab->quantX > tab->quantO + 1) || (tab->quantO > tab->quantX + 1)){
         return 0;
@@ -64,7 +64,7 @@ int TabuleiroEhValido(Tabuleiro *tab, int n)
     else return 1;
 }
 
-int Venceu(Tabuleiro *tab, char *ganhador, char simbol, int n)
+int Venceu(Tabuleiro *tab, char *ganhador, char simbol)
 {
     //VERIFICA LINHA
     for (int l = 0; l < 3; l++)
@@ -86,19 +86,25 @@ int Venceu(Tabuleiro *tab, char *ganhador, char simbol, int n)
             return 1;
         }
     }
-
-    char diagonal[4] = {
+    //VERIFICA DIAGONAL ESQ - DIR
+    char diagonal[4] = { 
         tab->matriz[0][0],
         tab->matriz[1][1],
         tab->matriz[2][2],
-        '\0'};
-    if (strcmp(diagonal, ganhador) == 0) // Verifica Diagonal dir->esq
+        '\0'
+    };
+    if (strcmp(diagonal, ganhador) == 0)
     {
         return 1;
     }
 
-    //VERIFICA DIAGONAL ESQ - DIRE
-    char diagonal2[4] = {tab->matriz[0][2],tab->matriz[1][1],tab->matriz[2][0],'\0'};
+    //VERIFICA DIAGONAL DIR - ESQ
+    char diagonal2[4] = {
+        tab->matriz[0][2],
+        tab->matriz[1][1],
+        tab->matriz[2][0],
+        '\0'
+    };
     if (strcmp(diagonal2, ganhador) == 0)
     {
         return 1;
