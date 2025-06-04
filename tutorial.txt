@@ -1,7 +1,7 @@
 ==============================================
 Como compilar e executar o programa no Linux
 ==============================================
-1. Inicie o terminal.
+1. Inicie o Terminal.
 2. Navegue até o diretório da pasta do programa.
 3. Execute o comando: gcc tp.c -c
 4. Execute o comando: gcc jogo.c -c
